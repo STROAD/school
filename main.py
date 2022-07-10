@@ -1,7 +1,7 @@
 from os import system, name
 from time import sleep
-import matplotlib.pyplot as plt
 from sympy import symbols, Derivative, Integral
+import matplotlib.pyplot as plt
 
 
 class NumberError(Exception):
@@ -139,7 +139,7 @@ while True:
         if n1 == 3:
             try:
                 clearConsole()
-                ns = int(
+                nd = int(
                     input(
                         "원하는 계산의 숫자를 눌러주세요.\
                     \n\n\n1 : 부정적분\n2 : 정적분\n\n"
@@ -178,7 +178,6 @@ while True:
 
         if n1 == 4:
             clearConsole()
-
             sleep(2)
 
         if n1 == 5:
