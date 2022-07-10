@@ -43,6 +43,9 @@ for item in progressBar(items, prefix=" 시작중 :", suffix="완료", length=50
     sleep(0.001)
 
 
+x = symbols("x")
+
+
 while True:
     try:
         clearConsole()
@@ -126,14 +129,55 @@ while True:
                 continue
 
         if n1 == 2:
+            clearConsole()
+            fx = input("함수 f(x) 입력 : ")
+            fprime = Derivative(fx, x).doit()
+            print(f"f′(x) = {fprime} 입니다")
 
             sleep(2)
 
         if n1 == 3:
+            try:
+                clearConsole()
+                ns = int(
+                    input(
+                        "원하는 계산의 숫자를 눌러주세요.\
+                    \n\n\n1 : 부정적분\n2 : 정적분\n\n"
+                    )
+                )
 
-            sleep(2)
+                if nd == 1:
+                    clearConsole()
+                    fx = input("함수 f(x) 입력 : ")
+                    Fx = Integral(fx, x).doit()
+                    print(f"Fx = {Fx} + C 입니다")
+                    sleep(2)
+
+                if nd == 2:
+                    clearConsole()
+                    fx = input("함수 f(x) 입력 : ")
+                    a = input("아래끝 a 입력 : ")
+                    b = input("위끝 b 입력 : ")
+                    Fx = Integral(fx, (x, a, b)).doit()
+                    print(f"Fx = {Fx} 입니다")
+                    sleep(2)
+
+                if nd > 2 or nd < 1:
+                    raise NumberError(f"입력값 : {nd}")
+
+            except NumberError as err:
+                print("\n\n에러가 발생했습니다.\n유효한 숫자를 입력해주세요.\n")
+                print(err)
+                sleep(1)
+                continue
+
+            except:
+                print("\n\n에러가 발생했습니다.\n유효한 숫자를 입력해주세요.\n")
+                sleep(1)
+                continue
 
         if n1 == 4:
+            clearConsole()
 
             sleep(2)
 
