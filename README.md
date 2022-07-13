@@ -25,3 +25,7 @@
 프로그램에서 `5*x**3 + 3*x**2 + 10*x + 30601`로 입력하면 된다.
 
 (공백 상관 없음)
+
+
+### 다운로드
+[Download](https://github.com/STROAD/school/releases)
