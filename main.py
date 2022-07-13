@@ -63,12 +63,13 @@ while True:
                 input(
                     "\n\n\n도움말\n\
                     \n\n※ 버전※\
-                    \n\nv1.0\
+                    \n\nv1.0.0\
                     \n\n\n※ 안내※\
                     \n\
                     \n프로그램을 종료하고 싶으시면 초기화면에서 '5'를 눌러주세요.\
                     \n\n\n※ 주의※\n잘못된 값을 입력하면 초기화면으로 돌아갑니다.\
-                    \n\n\n도움말에서 나가려면 아무키나 누르세요.\n"
+                    \n수식 입력 방법은 이곳을(https://github.com/STROAD/school) 참고해주세요.\
+                    \n\n도움말에서 나가려면 아무키나 누르세요.\n"
                 )
 
             elif n1 == 1:
@@ -188,7 +189,6 @@ while True:
                 plt.axis([-10, 10, -10, 10])
                 plt.plot(xs, ys)
                 plt.show()
-                sleep(2)
 
             elif n1 == 5:
                 clearConsole()
