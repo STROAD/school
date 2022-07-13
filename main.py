@@ -5,6 +5,11 @@ from sympy import symbols, Derivative, Integral
 from scipy.interpolate import make_interp_spline
 import matplotlib.pyplot as plt
 
+import tkinter
+import matplotlib
+
+matplotlib.use("TkAgg")
+
 
 class NumberError(Exception):
     def __init__(self, msg):
@@ -196,7 +201,7 @@ while True:
                 sleep(1)
                 break
 
-        elif n1 > 5 or ns < 0:
+        elif n1 > 5 or n1 < 0:
             raise NumberError(f"입력값 : {n1}")
 
     except NumberError as err:
