@@ -1,14 +1,13 @@
 from os import system, name
 from time import sleep
-import numpy as np
+from numpy import array, linspace
 from sympy import symbols, Derivative, Integral
 from scipy.interpolate import make_interp_spline
-import matplotlib.pyplot as plt
-
 import tkinter
-import matplotlib
+from matplotlib import use
 
-matplotlib.use("TkAgg")
+use("TkAgg")
+from matplotlib.pyplot import figure, xlabel, ylabel, grid, axis, plot, show
 
 
 class NumberError(Exception):
@@ -54,21 +53,21 @@ x = symbols("x")
 
 
 while True:
-    try:
-        clearConsole()
-        n1 = int(
-            input(
-                "원하는 작업의 번호를 입력해주세요.\n\n\n0 : 도움말\n1 : 사칙연산\n2 : 미분\n3 : 적분\n4 : 그래프 그리기\n5 : 나가기\n\n"
-            )
+    clearConsole()
+    n1 = int(
+        input(
+            "원하는 작업의 번호를 입력해주세요.\n\n\n0 : 도움말\n1 : 사칙연산\n2 : 미분\n3 : 적분\n4 : 그래프 그리기\n5 : 나가기\n\n"
         )
+    )
 
+    try:
         if 0 <= n1 <= 5:
             if n1 == 0:
                 clearConsole()
                 input(
                     "\n\n\n도움말\n\
                     \n\n※ 버전※\
-                    \n\nv1.0.0\
+                    \n\nv1.1.0\
                     \n\n\n※ 안내※\
                     \n\
                     \n프로그램을 종료하고 싶으시면 초기화면에서 '5'를 눌러주세요.\
@@ -78,15 +77,15 @@ while True:
                 )
 
             elif n1 == 1:
-                try:
-                    clearConsole()
-                    ns = int(
-                        input(
-                            "원하는 계산의 숫자를 눌러주세요.\
-                        \n\n\n1 : 덧셈\n2 : 뺄셈\n3 : 곱셈\n4 : 나눗셈\n\n"
-                        )
+                clearConsole()
+                ns = int(
+                    input(
+                        "원하는 계산의 숫자를 눌러주세요.\
+                    \n\n\n1 : 덧셈\n2 : 뺄셈\n3 : 곱셈\n4 : 나눗셈\n5 : 사칙연산\n\n"
                     )
+                )
 
+                try:
                     if ns == 1:
                         clearConsole()
                         st = float(input("\n첫번째 숫자를 입력해 주세요.\n"))
@@ -115,7 +114,13 @@ while True:
                         print(f"\n\n{st} / {nd} = {st / nd}\n")
                         sleep(2)
 
-                    elif ns > 4 or ns < 1:
+                    elif ns == 5:
+                        clearConsole()
+                        st = input("\n식을 입력해 입력해 주세요.\n")
+                        print(f"\n\n{st} = {eval(st)}\n")
+                        sleep(2)
+
+                    elif ns > 5 or ns < 1:
                         raise NumberError(f"입력값 : {ns}")
 
                 except NumberError as err:
@@ -138,15 +143,15 @@ while True:
                 sleep(2)
 
             elif n1 == 3:
-                try:
-                    clearConsole()
-                    nd = int(
-                        input(
-                            "원하는 계산의 숫자를 눌러주세요.\
-                        \n\n\n1 : 부정적분\n2 : 정적분\n\n"
-                        )
+                clearConsole()
+                nd = int(
+                    input(
+                        "원하는 계산의 숫자를 눌러주세요.\
+                    \n\n\n1 : 부정적분\n2 : 정적분\n\n"
                     )
+                )
 
+                try:
                     if nd == 1:
                         clearConsole()
                         fx = input("함수 f(x) 입력 : ")
@@ -179,21 +184,21 @@ while True:
 
             elif n1 == 4:
                 clearConsole()
-                x = np.array(range(-100, 101))
+                x = array(range(-100, 101))
                 y = eval(input("함수 입력 : y = "))
 
-                plt.figure("그래프 그리기")
-                plt.xlabel("x")
-                plt.ylabel("y", rotation=0)
-                plt.grid(True)
+                figure("그래프 그리기")
+                xlabel("x")
+                ylabel("y", rotation=0)
+                grid(True)
 
                 model = make_interp_spline(x, y)
-                xs = np.linspace(-10, 10, 500)
+                xs = linspace(-10, 10, 500)
                 ys = model(xs)
 
-                plt.axis([-10, 10, -10, 10])
-                plt.plot(xs, ys)
-                plt.show()
+                axis([-10, 10, -10, 10])
+                plot(xs, ys)
+                show()
 
             elif n1 == 5:
                 clearConsole()
