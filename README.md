@@ -28,4 +28,4 @@
 
 
 ### 다운로드
-[Download](https://github.com/STROAD/school/releases)
+[Download](https://github.com/STROAD/school/releases/download/v1.1.0/calculator.exe)
